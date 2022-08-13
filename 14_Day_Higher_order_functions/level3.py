@@ -26,6 +26,6 @@ total = sorted(total, key= lambda x : x[1], reverse=True)
 
 espaniol = list(i['name'] for i in countries if 'Spanish' in i['languages'])
 
-print(espaniol)
+
 
 
