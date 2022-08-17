@@ -1,4 +1,4 @@
-from ast import Try
+
 import re
 
 def is_valid_variable(variable):
@@ -13,7 +13,7 @@ def is_valid_variable(variable):
             return False
     except Exception:
         return False
-    pass
+    
 
 
 print(is_valid_variable('!firstname'))
