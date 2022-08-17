@@ -23,6 +23,7 @@ for pais in countries:
 total = sorted(languages.items())
 
 total = sorted(total, key= lambda x : x[1], reverse=True)
+print(total)
 
 espaniol = list(i['name'] for i in countries if 'Spanish' in i['languages'])
 
