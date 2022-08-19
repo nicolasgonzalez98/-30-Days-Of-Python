@@ -1,28 +1,28 @@
-import json
+#Extract all incoming email addresses as a list from the email_exchange_big.txt file.
 
-def most_spoken_languages(filename, length):
-    path = '../data/'+filename
-    languagues = {}
-    with open(path, encoding="UTF8") as file:
-        archivo = json.load(file)
-        for pais in archivo:
-            for lang in pais['languages']:
-                if lang in languagues:
-                    languagues[lang]+=1
-                else:
-                    languagues[lang]=1
-    total = sorted(languagues.items())
-    return sorted(total, key= lambda x : x[1], reverse=True)[:length]
+import re
 
-def most_populated_countries(filename, length):
-    path = '../data/'+filename
+
+
+with open('../data/email_exchanges_big.txt') as f:
     
-    with open(path, encoding="UTF8") as file:
-        archivo = json.load(file)
-        archivo = list(map(lambda x:dict(country=x['name'], population=x['population']), archivo))
-        archivo = sorted(archivo, key=lambda x:x['population'], reverse=True)
-            
-    return archivo[:length]
+    lineas = f.read()
+    email = re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", lineas)
+    
 
-#print(most_spoken_languages(filename='countries_data.json', length=3))
-#print(most_populated_countries(filename='countries_data.json', length=10))
+def find_most_common_words(path, count):
+    palabras = {}
+    with open(path) as f:
+        texto = f.read()
+        
+        for w in texto.split():
+            if w in palabras:
+                palabras[w] += 1
+            else:
+                palabras[w] = 1
+    
+    total = sorted(palabras.items())
+    total = sorted(total, key= lambda x : x[1], reverse=True)
+    return total[:count]
+
+print(find_most_common_words('../data/michelle_obama_speech.txt',10))
