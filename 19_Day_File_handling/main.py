@@ -25,4 +25,7 @@ def find_most_common_words(path, count):
     total = sorted(total, key= lambda x : x[1], reverse=True)
     return total[:count]
 
+print(find_most_common_words('../data/obama_speech.txt',10))
 print(find_most_common_words('../data/michelle_obama_speech.txt',10))
+print(find_most_common_words('../data/donald_speech.txt',10))
+print(find_most_common_words('../data/melina_trump_speech.txt',10))
